@@ -95,7 +95,7 @@ body:hover .cursor{
 
 }
 
-.page1,.page2,.page3,.page4{
+.page1,.page2,.page3,.page4,.page5{
     /* width: 100%; */
     min-height: 100vh;
     max-width: 100vw;
@@ -247,7 +247,7 @@ body:hover .cursor{
     }
 
 
-button{
+.about-us_btn{
     text-transform: uppercase;
     font-family: var(--main-font-family);
     background-color: #edbffe ;
@@ -441,7 +441,7 @@ button{
     color: #edbfff;
 }
 
-span{
+.normal-span{
     display: block;
     font-size: 10rem;
     font-family: var(--main-font-family);
@@ -510,4 +510,231 @@ img{
 /*------------------------------------------------------- page 5 code ------------------------------------------------------------------------- */
 
 
-    
+.page5_container{
+    padding: 0;
+    max-width: 100vw;
+    min-height: 100vh;
+    background-color: var(--background);
+    padding: 5rem; 
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+.page5_heading{
+    font-family: var(--main-font-family);
+    font-size: 8rem;
+    color: white;
+    text-transform: uppercase;
+    transition: color 0.15s ease;
+    font-weight: 500;
+    display: block;
+}
+
+
+.page5_top-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: green; */
+}
+
+.page5_heading-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: pink; */
+}
+
+
+
+
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.page5_list-item{
+    text-transform: capitalize;
+    /* color: white; */
+    font-family: var(--main-font-family);
+    font-size: 2rem;
+    padding: 2rem 0;
+    border-top: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-color);
+    transition: color 0.25s ease;
+}
+
+.page5_list-item:hover{
+    color: white;
+}
+
+.page5_heading1-container , .page5_heading2-container{
+    /* background-color: orange; */
+    position: relative;
+    overflow: hidden;
+}
+
+.page5_heading1-container {
+    width: 50rem;
+    height: 10rem; 
+
+}
+.page5_heading2-container{
+    width: 40rem;
+    height: 10rem; 
+}
+
+
+
+.page5_heading2.page5_first-text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.4s ease;
+}
+
+.page5_heading2.page5_follow-up-text{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.4s ease;
+}
+
+.page5_heading1.page5_first-text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.4s ease;
+}
+
+.page5_heading1.page5_follow-up-text{
+    position: absolute;
+    top: -100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.4s ease;
+}
+
+
+.page5_heading1-container.page5_clicked .page5_follow-up-text {
+    transform: translateY(100%);
+}
+
+
+
+.page5_heading1-container.page5_clicked .page5_first-text {
+    transform: translateY(200%);
+}
+
+.page5_heading2-container.page5_clicked .page5_follow-up-text {
+    transform: translateY(-100%);
+}
+
+.page5_heading2-container.page5_clicked .page5_first-text {
+    transform: translateY(-100%);
+}
+
+
+
+.page5_active-text{
+    color: #edbfff;
+}
+
+.page5_normal-text{
+    color: white;
+}
+
+
+body:hover > .page5_cursor{
+    opacity: 1;
+
+}
+
+.page5_image-card-1,.page5_image-card-2{
+    pointer-events: none;  /* crucial so that the image doesn't hinder the interactions of the content behind it */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 35rem;
+    width: 35rem;
+    opacity: 0;
+    transition: opacity 500ms ease;
+}
+
+.page5_image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.page5_visible-image{
+    opacity: 1;
+}
+
+/* .hidden-image{
+    opacity: 0;
+} */
+
+.page5_hidden{
+    display: none;
+}
+
+
+.page5_toggle-button {
+    color: white;
+    font-size: 2rem;
+    text-transform: uppercase;
+    position: relative;
+    /* background-color: orange; */
+    height: 2.5rem;
+    width: 12rem;
+
+    overflow: hidden;
+}
+
+.page5_first-text, .page5_follow-up-text {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease;
+}
+
+.page5_first-text{
+    top: 0;
+    left: 0;
+}
+
+.page5_follow-up-text{
+    top: 100%;
+    left: 0;
+}
+
+.page5_scrolling-text-button{
+    font-size: 2rem;
+    font-family: var(--main-font-family);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page5_toggle-button.page5_clicked .page5_first-text{
+    transform: translateY(-100%);
+}
+
+.page5_toggle-button.page5_clicked .page5_follow-up-text{
+    transform: translateY(-100%);
+}

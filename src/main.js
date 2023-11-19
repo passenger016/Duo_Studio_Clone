@@ -150,3 +150,85 @@ let t3 = gsap.timeline({
 t3.to(".main-container", {
     backgroundColor: "#0f0d0d" // Change "yourNewColor" to the desired background color
 });
+
+
+
+
+const toggleButton = document.querySelector('.page5_toggle-button');
+const heading1Container = document.querySelector('.page5_heading1-container');
+const heading2Container = document.querySelector('.page5_heading2-container');
+const image1Cards = document.querySelectorAll('.page5_image-card-1');
+const image2Cards = document.querySelectorAll('.page5_image-card-2');
+const interactables = document.querySelectorAll('.page5_interactable');
+const interactables1=document.querySelectorAll('.page5_interactable-1');
+const interactables2=document.querySelectorAll('.page5_interactable-2');
+const list = document.querySelectorAll('.page5_list');
+let activeListNumber = 0;
+
+document.addEventListener('DOMContentLoaded', () => {
+    toggleButton.addEventListener('click', function () {
+        heading1Container.classList.toggle('page5_clicked');
+        heading2Container.classList.toggle('page5_clicked');
+        toggleButton.classList.toggle('page5_clicked');
+        updateActiveList();
+
+    });
+    list[activeListNumber].classList.remove('page5_hidden');
+    console.log(`showing list ${activeListNumber + 1}`)
+
+});
+
+
+let updateActiveList = () => {
+
+    list[activeListNumber].classList.add('page5_hidden');
+    activeListNumber = (activeListNumber + 1) % list.length; // cyclic looping over the list items
+    list[activeListNumber].classList.remove('page5_hidden');
+    console.log(`showing list ${activeListNumber + 1}`);
+}
+
+
+window.addEventListener('mousemove', (e) => {
+    let interactableNumber;
+
+    const interactable = e.target.closest('.page5_interactable'); // to check if the event happening is closest to an element which has the 'interactable class' in it
+    const interacting = interactable !== null; // if interactable is not null then interacting turns true;
+    if (interacting) {
+        console.log(`interacting with ${activeListNumber + 1}`);
+        interactableNumber = checkInteractable(e);
+        if (activeListNumber == 0) {
+            page5_showImage(interactableNumber, e, image1Cards);
+            checkMouseOut(interactableNumber, interactables1, image1Cards);
+        }
+        else {
+            page5_showImage(interactableNumber, e, image2Cards);
+            checkMouseOut(interactableNumber, interactables2, image2Cards);
+        }
+    }
+
+})
+
+
+
+
+let checkInteractable = (e) => {
+    const interactableNumber = e.target.closest('.page5_interactable').dataset.type;
+    console.log(`interacting with ${interactableNumber}`);
+    return interactableNumber;
+}
+
+let page5_showImage = (interactableNumber, e, imageCards) => {
+    console.log(`showing image ${interactableNumber}`);
+    imageCards[interactableNumber - 1].classList.add('page5_visible-image');
+    const x = e.clientX - imageCards[interactableNumber - 1].offsetWidth / 2;
+    const y = e.clientY - imageCards[interactableNumber - 1].offsetWidth / 2;
+    imageCards[interactableNumber - 1].style.transform = `translate(${x}px ,${y}px)`;
+
+}
+
+function checkMouseOut(interactableNumber, interactables , imageCards) {
+    interactables[interactableNumber - 1].addEventListener('mouseout', () => {
+        console.log(`mouse out`);
+        imageCards[interactableNumber - 1].classList.remove('page5_visible-image');
+    })
+}
