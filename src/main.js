@@ -97,7 +97,7 @@ let t1 = gsap.timeline({
     scrollTrigger: {
         trigger: ".page1 .heading1", // element that triggers the animation
         scroller: window, // Element that is being scrolled (the container) , we are using window as the scroller
-        markers: true, // Show markers on the scrollbar for debugging
+        // markers: false, // Show markers on the scrollbar for debugging
         start: "top 30%", // Start the animation when the element is 30% from the top of the viewport
         end: "top 0", // End the animation when the element is at the top of the viewport
         scrub: 2 //  Smoothly scrub the animation over 2 seconds , time it takes to catch u[]
@@ -108,7 +108,7 @@ let t2 = gsap.timeline({
     scrollTrigger: {
         trigger: ".page1 .heading1", // element that triggers the animation
         scroller: window, // element that is being scrolled
-        markers: true,
+        markers: false,
         start: "top -120%", // start the animation when the trigger element is 120% at the top of the viewport
         end: "top -130%", // stop the animation when the trigger element is 130% at the top of the viewport
         scrub: 3
@@ -140,7 +140,7 @@ let t3 = gsap.timeline({
     scrollTrigger: {
         trigger: ".page3_last-video",
         scroller: window,
-        markers: true,
+        markers: false,
         start: "top 30%",
         end: "top 0%",
         scrub: 3
